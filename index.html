@@ -1,12 +1,61 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>KKTIX Helper</title>
-  </head>
-  <body>
-    <h1>KKTIX Helper 已部署成功！</h1>
-    <p>這是首頁內容。你也可以點下方連結下載 userscript。</p>
-    <a href="helper.user.js">下載 KKTIX Helper Script</a>
-  </body>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KKTIX Helper</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      color: #2b6cb0;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 20px;
+      background-color: #3182ce;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    a.button:hover {
+      background-color: #2c5282;
+    }
+    code {
+      background: #eee;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <h1>KKTIX Helper 已部署成功 🎉</h1>
+  <p>這個工具可以協助你更快完成 KKTIX 的報名流程。</p>
+
+  <h2>🔧 安裝方式</h2>
+  <ol>
+    <li>請先安裝瀏覽器擴充腳本管理器，例如：
+      <ul>
+        <li><a href="https://www.tampermonkey.net/" target="_blank">Tampermonkey（推薦 Chrome / Edge）</a></li>
+        <li><a href="https://violentmonkey.github.io/" target="_blank">Violentmonkey（Firefox）</a></li>
+      </ul>
+    </li>
+    <li>安裝完成後，點擊下方按鈕安裝腳本：</li>
+  </ol>
+
+  <a href="./helper.user.js" class="button">⬇️ 安裝 KKTIX Helper Script</a>
+
+  <h2>📌 使用方式</h2>
+  <p>安裝腳本後，進入 KKTIX 的報名頁面，腳本將自動協助你完成操作。</p>
+
+  <p>如有問題或想要回報 bug，請至 GitHub repo 開 issue 🙌</p>
+</body>
 </html>
