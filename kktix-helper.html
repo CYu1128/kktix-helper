@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KKTIX 搶票輔助工具</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    button { padding: 10px 20px; font-size: 16px; margin: 10px 0; }
+    #log { white-space: pre-wrap; font-size: 14px; background: #f0f0f0; padding: 10px; border: 1px solid #ccc; height: 200px; overflow-y: scroll; }
+  </style>
+</head>
+<body>
+  <h1>KKTIX 搶票輔助工具</h1>
+  <p>請在開票前打開此工具頁並停留在票券頁面</p>
+  <label><input type="checkbox" id="autoNext" checked> 自動按「下一步」</label><br>
+  <label><input type="checkbox" id="safeMode" checked> 開啟安全模式（減少自動行為）</label><br>
+  <button onclick="startHelper()">啟動輔助工具</button>
+
+  <div id="log"></div>
+
+  <script>
+    function log(msg) {
+      document.getElementById("log").textContent += msg + "\n";
+    }
+
+    function startHelper() {
+      log("🚀 工具啟動中...");
+      const safe = document.getElementById("safeMode").checked;
+      const autoNext = document.getElementById("autoNext").checked;
+
+      const interval = setInterval(() => {
+        try {
+          // 移除廣告與已售完
+          document.querySelectorAll('.ticket.unavailable, .event-description, .promotion, .soldout, .kktix_ad').forEach(e => e.remove());
+          log("🧹 已清除已售完與廣告區塊");
+
+          // 自動選票數
+          document.querySelectorAll("select.ticket-quantity-select").forEach(sel => {
+            if (sel.value === "0") sel.value = "2";
+          });
+
+          // 勾選同意條款
+          const checkbox = document.querySelector("#person_agree_term");
+          if (checkbox && !checkbox.checked) checkbox.click();
+
+          // 自動按下一步
+          if (autoNext && !safe) {
+            const btn = document.querySelector(".register.btn, .btn-next-step");
+            if (btn) {
+              btn.click();
+              log("✅ 已自動點擊下一步");
+              clearInterval(interval);
+            }
+          }
+        } catch (e) {
+          log("⚠️ 錯誤: " + e.message);
+        }
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
